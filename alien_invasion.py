@@ -3,6 +3,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 import game_functions as game_f
+from pygame.sprite import Group
 
 
 def run_game():
@@ -15,12 +16,18 @@ def run_game():
     # pygame.mouse.set_visible(ai_settings.mouse_enabled)
     # pygame.key.get_focused()
     ship = Ship(ai_settings, screen)
+    bullets = Group()
 
     while True:
-        game_f.check_events(ship)
-
+        game_f.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        game_f.update_screen(ai_settings, screen, ship)
+        bullets.update()
+        for bullet in bullets.copy():
+            if bullet.rect.bottom <= 0:
+                bullets.remove(bullet)
+        print(len(bullets)
+
+        game_f.update_screen(ai_settings, screen, ship, bullets)
 
 
 run_game()
