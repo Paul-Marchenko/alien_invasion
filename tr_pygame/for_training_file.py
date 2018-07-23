@@ -1,7 +1,6 @@
 import pygame
-import sys
 from tr_settings import Tr_Settings
-from fighter import Fighter
+from tr_pygame.fighter import Fighter
 import tr_game_func
 
 
