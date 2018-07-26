@@ -6,10 +6,13 @@ class Rocket:
 
         self.screen = screen
         self.rock_settings = rock_settings
-        self.image = pygame.image.load('images/rocket.bmp')
+        self.image = pygame.image.load('images/ship1.bmp')
+
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
-        self.rect.centery = self.screen_rect.centery
+        self.center = float(self.rect.centery)
+        self.rect.centery = self.center
+
         self.rect.bottom = self.screen_rect.bottom
         self.moving_right = False
         self.moving_left = False
@@ -17,9 +20,9 @@ class Rocket:
         self.moving_down = False
 
     def rocket_update(self):
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             self.rect.centery +=1
-        if self.moving_left:
+        if self.moving_left and self.rect.left > 0:
             self.rect.centery -=1
         if self.moving_up:
             self.rect.centery += 1

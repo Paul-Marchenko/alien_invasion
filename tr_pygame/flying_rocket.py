@@ -8,7 +8,7 @@ def launch_rocket():
 
     pygame.init()
     rock_settings = RockMainSettings()
-    screen = pygame.display.set_mode(rock_settings.screen_width, rock_settings.screen_height)
+    screen = pygame.display.set_mode((rock_settings.screen_width, rock_settings.screen_height))
     pygame.display.set_caption("Yo-hooo")
     rocket = Rocket(rock_settings, screen)
 
